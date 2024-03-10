@@ -1,0 +1,24 @@
+function points(array $games): int {
+  
+  $scoreX = 0;
+  
+  if( !empty($games)){
+    foreach($games as $game){
+      $results = explode(':',$game);
+      if( is_numeric($results[0]) && ( isset($results[1]) && is_numeric($results[1]) )){
+        $x = intval($results[0],10);
+        $y = intval($results[1],10);
+        
+        if($x > $y){
+          $scoreX += 3;
+        }else if($x === $y){
+          $scoreX += 1;
+        }
+        
+      }
+    }
+  }
+  
+  return $scoreX;
+  
+}

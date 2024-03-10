@@ -1,0 +1,28 @@
+--# write your SQL statement here: 
+-- you are given a table 'spiral' with column 'n'.
+-- create a query with:
+--   this column and your result in a column named 'res'
+--   ordered ascending by 'n'
+-- /*
+SELECT 
+  r.n,
+  ( 
+    (r.n * (r.middle + 1)) + 
+    (CASE r."valuePar"
+      WHEN 1 THEN -1
+      WHEN 0 THEN r.middle
+     END)  
+  )  AS "res"
+FROM(
+-- */
+  SELECT 
+    s.n,  
+    (s.n / 2) AS "middle",
+    (CASE ((s.n % 2) = 0) 
+      WHEN true THEN 1
+      WHEN false THEN 0 END) AS "valuePar"
+  FROM spiral s 
+-- /*
+) r 
+ORDER BY r.n ASC; 
+-- */
